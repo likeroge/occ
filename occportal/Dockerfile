@@ -1,35 +1,24 @@
-# Dockerfile (multi-stage) — Maven
-ARG MAVEN_IMAGE=eclipse-temurin:17-jdk-alpine
-ARG RUNTIME_IMAGE=eclipse-temurin:17-jre-alpine
+FROM maven:3.8.6-eclipse-temurin-17-alpine AS builder
 
-FROM ${MAVEN_IMAGE} AS build
 WORKDIR /app
 
-# Копируем pom и wrapper для кэширования зависимостей
-# COPY pom.xml mvnw* ./
-# COPY .mvn .mvn
-# RUN mvn -B -f pom.xml -DskipTests dependency:go-offline
+COPY pom.xml .
+COPY src ./src
 
-COPY . .
+RUN mvn dependency:go-offline -B
 
-# Запускаем сборку (предполагается, что используется Maven)
-RUN source mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
+
 WORKDIR /app
 
-# Копируем собранный JAR из стадии сборки
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=builder /app/target/*.jar app.jar
 
-# Создаем непривилегированного пользователя для безопасности
+# Создаем непривилегированного пользователя
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring
 
-# Открываем порт
-EXPOSE 5000
+EXPOSE 8080
 
-ENV SPRING_PROFILES_ACTIVE=prod
-ENV SERVER_PORT=5000
-
-# Запускаем приложение
 ENTRYPOINT ["java", "-jar", "app.jar"]
