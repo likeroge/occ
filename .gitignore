@@ -1,3 +1,4 @@
 frontend/node_modules/
 occportal/.idea/
 occportal/target/
+occportal/*.db
