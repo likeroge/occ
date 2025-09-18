@@ -1,5 +1,5 @@
 # Dockerfile (multi-stage) — Maven
-ARG MAVEN_IMAGE=maven:3.9.6-eclipse-temurin-17-slim
+ARG MAVEN_IMAGE=eclipse-temurin-17-slim
 ARG RUNTIME_IMAGE=eclipse-temurin:17-jre-jammy
 
 FROM ${MAVEN_IMAGE} AS build
