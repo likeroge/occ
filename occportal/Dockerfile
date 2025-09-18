@@ -19,7 +19,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # Копируем собранный JAR из стадии сборки
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 # Создаем непривилегированного пользователя для безопасности
 RUN addgroup -S spring && adduser -S spring -G spring
