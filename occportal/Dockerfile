@@ -13,7 +13,7 @@ WORKDIR /app
 COPY . .
 
 # Запускаем сборку (предполагается, что используется Maven)
-RUN ./mvnw clean package -DskipTests
+RUN source mvnw clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
