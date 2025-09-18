@@ -19,6 +19,6 @@ COPY --from=builder /app/target/*.jar app.jar
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring
 
-EXPOSE 8080
+EXPOSE 5000
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
