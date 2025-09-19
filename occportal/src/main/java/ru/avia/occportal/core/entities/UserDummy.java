@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Data
-//@Table(name = "users")
 public class UserDummy {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

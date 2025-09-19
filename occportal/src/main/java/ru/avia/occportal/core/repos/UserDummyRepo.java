@@ -11,7 +11,7 @@ import java.util.Optional;
  * @date 19.09.2025
  */
 public interface UserDummyRepo {
-    public UserDummy create(UserDummy userDummy);
+//    public UserDummy create(UserDummy userDummy);
 
     public Optional<UserDummy> findById(Long id);
 
