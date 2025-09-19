@@ -1,19 +1,19 @@
 spring:
   application:
     name: occapi
-    datasource:
-      url: jdbc:h2:file:./data/db
-      driverClassName: org.h2.Driver
-#  datasource:
-#    url: jdbc:postgresql://185.250.44.151:5432/mydb
-#    username: admin
-#    password: secret
-#    driver-class-name: org.postgresql.Driver
+#    datasource:
+#      url: jdbc:h2:file:./data/db
+#      driverClassName: org.h2.Driver
+  datasource:
+    url: jdbc:postgresql://185.250.44.151:5432/mydb
+    username: admin
+    password: secret
+    driver-class-name: org.postgresql.Driver
   jpa:
-#    properties:
-#      hibernate:
-#        format_sql: true
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
     show-sql: true
     hibernate:
