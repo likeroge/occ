@@ -3,7 +3,8 @@ spring:
     name: occapi
   datasource:
 #    platform: postgres
-    url: jdbc:postgresql://185.250.44.151:5432/mydb
+#    url: jdbc:postgresql://185.250.44.151:5432/mydb
+    url: jdbc:postgresql://localhost:5432/mydb
     username: admin
     password: secret
     # driver-class-name: org.h2.Driver
@@ -13,7 +14,7 @@ spring:
     # database-platform: org.hibernate.dialect.H2Dialect
 #    database-platform: org.hibernate.dialect.PostgreSQL15Dialect
     database: postgresql
-#    generate-ddl: true
+    generate-ddl: true
     show-sql: true
     hibernate:
       ddl-auto: create-drop
