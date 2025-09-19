@@ -2,23 +2,16 @@ spring:
   application:
     name: occapi
   datasource:
-#    platform: postgres
-#    url: jdbc:postgresql://185.250.44.151:5432/mydb
-    url: jdbc:postgresql://localhost:5432/mydb
+    url: jdbc:postgresql://185.250.44.151:5432/mydb
     username: admin
     password: secret
-    # driver-class-name: org.h2.Driver
     driver-class-name: org.postgresql.Driver
-    # url: jdbc:h2:file:./database.db
   jpa:
-    # database-platform: org.hibernate.dialect.H2Dialect
-#    database-platform: org.hibernate.dialect.PostgreSQL15Dialect
     database: postgresql
     generate-ddl: true
     show-sql: true
     hibernate:
       ddl-auto: create-drop
-    # open-in-view: true
 server:
   port: 5000
   servlet:
